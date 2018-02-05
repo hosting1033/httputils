@@ -101,13 +101,13 @@ public class ProxyServlet extends HttpServlet {
 
   /* MISC */
 
-  protected boolean doLog = false;
-  protected boolean doForwardIP = true;
+  protected boolean doLog = true;
+  protected boolean doForwardIP = false;
   /** User agents shouldn't send the url fragment but what if it does? */
   protected boolean doSendUrlFragment = true;
-  protected boolean doPreserveHost = false;
-  protected boolean doPreserveCookies = false;
-  protected boolean doHandleRedirects = false;
+  protected boolean doPreserveHost = true;
+  protected boolean doPreserveCookies = true;
+  protected boolean doHandleRedirects = true;
   protected int connectTimeout = -1;
   protected int readTimeout = -1;
 
@@ -182,6 +182,8 @@ public class ProxyServlet extends HttpServlet {
     initTarget();//sets target*
 
     proxyClient = createHttpClient(buildRequestConfig());
+    log("client created");
+    
   }
 
   /**
